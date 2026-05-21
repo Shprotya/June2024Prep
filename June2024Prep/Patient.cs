@@ -18,6 +18,8 @@ namespace June2024Prep
         // Navigation property to represent the one-to-many relationship with Appointments
         public virtual List<Appointment> Appointments { get; set; }
 
+        // Format: "Surname, FirstName – ContactNumber" for listbox display
+        public override string ToString() => $"{Surname}, {FirstName} – {ContactNumber}";
     }
 
     public class Appointment
@@ -29,6 +31,9 @@ namespace June2024Prep
         // Foreign key to link to the Patient
         public int PatientID { get; set; }
         public virtual Patient Patient { get; set; }
+
+        // Format: "dd/MM/yyyy HH:mm – Notes" for listbox display
+        public override string ToString() => $"{AppointmentTime:dd/MM/yyyy HH:mm} – {AppointmentNotes}";
     }
 
     public class PatientData : DbContext
